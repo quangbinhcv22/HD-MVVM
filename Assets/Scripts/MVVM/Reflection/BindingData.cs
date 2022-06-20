@@ -13,14 +13,17 @@ namespace MVVM
 
         [SerializeField] private BindingMode mode;
 
+        
+        [SerializeField] [Space] [Header("Source")] [HideLabel]
+        private ViewModelProperty sourceProperty;
 
-        [SerializeField] [Space] private ViewModelProperty sourceProperty;
-        [SerializeField] private ComponentEndpoint viewEndpoint;
+        [SerializeField] [Header("View")] [HideLabel]
+        private ComponentEndpoint viewEndpoint;
 
-
-        [SerializeField] [ShowIf(nameof(HaveSyncFromDest))]
+        [SerializeField] [ShowIf(nameof(HaveSyncFromDest))] [Header("View Event")] [HideLabel]
         private ComponentEvent destEvent;
 
+        
         [SerializeField, Space] private bool keepConnectOnDisable = false;
 
 
@@ -32,9 +35,6 @@ namespace MVVM
 
         private void Awake()
         {
-            // ViewEndpoint = viewEndpoint.ToEndpoint();
-
-
             _syncEndpoints = new SyncEndpoints(sourceProperty.ToEndpoint(), viewEndpoint.ToEndpoint());
 
             // if(mode.HaveSyncFromSource()) _eventWatchers.Add();

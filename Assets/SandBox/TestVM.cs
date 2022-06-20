@@ -1,14 +1,10 @@
-using System.Runtime.CompilerServices;
 using MVVM.ModelView;
 
-[Binding]
-public class TestVM
+namespace SandBox
 {
-    public int NumberA { get; set; }
-    public string textB { get; set; }
-
-    public void A()
+    [Binding]
+    public class TestVm
     {
-        
+        public float SliderValue { get; set; }
     }
 }
