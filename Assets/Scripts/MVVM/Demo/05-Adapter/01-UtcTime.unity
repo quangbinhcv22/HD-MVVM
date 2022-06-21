@@ -176,12 +176,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  sourceProperty:
+  source:
     viewModel: MVVM.Demo.UtcViewModel
     memberName: UtcTime
     dataAdapter: {fileID: 0}
     isShowAdapter: 0
-  viewEndpoint:
+  dest:
     component: {fileID: 1846499738}
     memberName: SetText
     dataAdapter: {fileID: 0}
@@ -189,7 +189,7 @@ MonoBehaviour:
   destEvent:
     component: {fileID: 0}
     eventName: 
-  keepConnectOnDisable: 0
+  keepBindingOnDisable: 0
 --- !u!1 &109480982
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,20 +681,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  sourceProperty:
+  source:
     viewModel: MVVM.Demo.UtcViewModel
     memberName: UtcTime
     dataAdapter: {fileID: 0}
     isShowAdapter: 0
-  viewEndpoint:
+  dest:
     component: {fileID: 1030710022}
     memberName: text
-    dataAdapter: {fileID: 11400000, guid: 365a041ba6efae34a913367b3a151107, type: 2}
+    dataAdapter: {fileID: 0}
     isShowAdapter: 1
   destEvent:
     component: {fileID: 0}
     eventName: 
-  keepConnectOnDisable: 0
+  keepBindingOnDisable: 0
 --- !u!1 &1030710020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 1846499736}
   - component: {fileID: 1846499738}
   m_Layer: 5
-  m_Name: Text
+  m_Name: FotmatText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

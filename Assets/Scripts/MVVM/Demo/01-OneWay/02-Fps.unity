@@ -576,12 +576,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  sourceProperty:
+  source:
     viewModel: MVVM.Demo.FpsViewModel
     memberName: Fps
     dataAdapter: {fileID: 0}
     isShowAdapter: 0
-  viewEndpoint:
+  dest:
     component: {fileID: 1030710022}
     memberName: text
     dataAdapter: {fileID: 0}
@@ -589,7 +589,7 @@ MonoBehaviour:
   destEvent:
     component: {fileID: 0}
     eventName: 
-  keepConnectOnDisable: 0
+  keepBindingOnDisable: 0
 --- !u!1 &1261901328
 GameObject:
   m_ObjectHideFlags: 0

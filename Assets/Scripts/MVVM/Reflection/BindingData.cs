@@ -13,31 +13,29 @@ namespace MVVM
 
         [SerializeField] private BindingMode mode;
 
-        
+
         [SerializeField] [Space] [Header("Source")] [HideLabel]
-        private ViewModelProperty sourceProperty;
+        private ViewModelProperty source;
 
-        [SerializeField] [Header("View")] [HideLabel]
-        private ComponentEndpoint viewEndpoint;
+        [SerializeField] [Header("Dest")] [HideLabel]
+        private ComponentEndpoint dest;
 
-        [SerializeField] [ShowIf(nameof(HaveSyncFromDest))] [Header("View Event")] [HideLabel]
+        [SerializeField] [ShowIf(nameof(HaveSyncFromDest))] [Header("Dest Event")] [HideLabel]
         private ComponentEvent destEvent;
 
-        
-        [SerializeField, Space] private bool keepConnectOnDisable = false;
+
+        [SerializeField, Space] private bool keepBindingOnDisable;
 
 
         private SyncEndpoints _syncEndpoints;
         private readonly List<EventWatcher> _eventWatchers = new List<EventWatcher>();
 
 
-        public MemberEndpoint ViewEndpoint { get; set; }
-
         private void Awake()
         {
-            _syncEndpoints = new SyncEndpoints(sourceProperty.ToEndpoint(), viewEndpoint.ToEndpoint());
+            _syncEndpoints = new SyncEndpoints(source.ToEndpoint(), dest.ToEndpoint());
 
-            // if(mode.HaveSyncFromSource()) _eventWatchers.Add();
+            if (mode.HaveSyncFromSource() && source.HaveNotifyPropertyChange()) _eventWatchers.Add(source.ToWatcher(_syncEndpoints.SyncFormSource));
             if (HaveSyncFromDest) _eventWatchers.Add(destEvent.ToWatcher(_syncEndpoints.SyncFormDest));
         }
 
@@ -49,7 +47,7 @@ namespace MVVM
 
         public void OnDisable()
         {
-            if (keepConnectOnDisable) return;
+            if (keepBindingOnDisable) return;
             _eventWatchers.ForEach(watcher => watcher.Dispose());
         }
 
@@ -60,8 +58,8 @@ namespace MVVM
 
         public void OnValidate()
         {
-            if (sourceProperty != null) sourceProperty.isShowAdapter = HaveSyncFromDest;
-            if (viewEndpoint != null) viewEndpoint.isShowAdapter = HaveSyncFromSource;
+            if (source != null) source.isShowAdapter = HaveSyncFromDest;
+            if (dest != null) dest.isShowAdapter = HaveSyncFromSource;
         }
     }
 }

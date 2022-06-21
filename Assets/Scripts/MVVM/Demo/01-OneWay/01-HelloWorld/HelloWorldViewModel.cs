@@ -1,10 +1,9 @@
 using MVVM.ModelView;
-using UnityEngine;
 
 namespace MVVM.Demo
 {
     [Binding]
-    public class HelloWorldViewModel : MonoBehaviour
+    public class HelloWorldViewModel
     {
         public string HelloText => "Hello World!";
     }

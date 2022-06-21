@@ -16,7 +16,7 @@ public class ViewModelProvider : MonoBehaviour
         {
             if (_instance is null)
             {
-                _instance = new GameObject().AddComponent<ViewModelProvider>();
+                _instance = new GameObject(nameof(ViewModelProvider)).AddComponent<ViewModelProvider>();
                 DontDestroyOnLoad(_instance);
             }
             

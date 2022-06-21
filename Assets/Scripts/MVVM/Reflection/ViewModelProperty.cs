@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MVVM.Demo;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -24,6 +25,19 @@ namespace MVVM.Reflection
         {
             return new MemberEndpoint(ViewModel, memberName, dataAdapter);
         }
+
+        public bool HaveNotifyPropertyChange() => ViewModel is INotifyPropertyChanged;
+
+        public EventWatcher ToWatcher(Action callback)
+        {
+            if (ViewModel is INotifyPropertyChanged iNotifyPropertyChanged)
+            {
+                return new PropertyChangedWatcher(iNotifyPropertyChanged, memberName, callback);
+            }
+
+            return null;
+        }
+
 
 #if UNITY_EDITOR
         [HideInInspector] public bool isShowAdapter = true;

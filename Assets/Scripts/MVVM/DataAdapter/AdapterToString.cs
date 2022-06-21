@@ -7,7 +7,7 @@ namespace MVVM.DataAdapter
     {
         public override object Adapting(object input)
         {
-            return input.ToString();
+            return input is null ? "null" : input.ToString();
         }
     }
 }

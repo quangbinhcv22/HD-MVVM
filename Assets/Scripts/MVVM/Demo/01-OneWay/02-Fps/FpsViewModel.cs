@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using MVVM.ModelView;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -5,13 +6,21 @@ using UnityEngine;
 namespace MVVM.Demo
 {
     [Binding]
-    public class FpsViewModel : MonoBehaviour
+    public class FpsViewModel : MonoBehaviour, INotifyPropertyChanged
     {
-        [ShowInInspector] public float Fps { get; set; }
+        [ShowInInspector] public int Fps { get; set; }
 
         private void Update()
         {
-            Fps = Time.frameCount / Time.time;
+            Fps = (int) (1 / Time.deltaTime);
+            NotifyPropertyChanged(nameof(Fps));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
