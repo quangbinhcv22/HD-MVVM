@@ -1,5 +1,6 @@
 using System;
 using MVVM.Reflection;
+using TMPro;
 using UnityEngine;
 
 public class TestEndPoint : MonoBehaviour
@@ -22,6 +23,8 @@ public class TestEndPoint : MonoBehaviour
 
     private void Update()
     {
+        // TMP_Text a; a.SetText();
+        
         if (Input.GetKeyDown(KeyCode.S))
         {
             _syncEndpoints.SyncFormSource();
@@ -39,13 +42,9 @@ public class ClassA
 {
     [SerializeField] private float number;
 
-    public void SetNumber(float number)
+    public float Number
     {
-        this.number = number;
-    }
-
-    public float GetNumber()
-    {
-        return number;
+        get => number;
+        set => number = value;
     }
 }

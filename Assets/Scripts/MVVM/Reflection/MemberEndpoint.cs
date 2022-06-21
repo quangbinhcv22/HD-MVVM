@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 
 namespace MVVM.Reflection
@@ -30,7 +29,9 @@ namespace MVVM.Reflection
         public void SetMember(string name)
         {
             _memberName = name;
-            if (string.IsNullOrEmpty(name) || _owner.Equals(null)) return;
+
+            if (string.IsNullOrEmpty(_memberName) || _owner.Equals(null)) return;
+
             _memberInfo = _owner.GetType().GetMember(_memberName).FirstOrDefault();
         }
 
@@ -45,14 +46,11 @@ namespace MVVM.Reflection
             if (_dataAdapter)
             {
                 var adaptedValue = _dataAdapter.Adapting(value);
-                var castedValue = Convert.ChangeType(adaptedValue, _memberInfo.ReturnType());
-
-                _memberInfo.SetValue(_owner, castedValue);
+                _memberInfo.SetValue(_owner, adaptedValue);
             }
             else
             {
-                var castedValue = Convert.ChangeType(value, _memberInfo.ReturnType());
-                _memberInfo.SetValue(_owner, castedValue);
+                _memberInfo.SetValue(_owner, value);
             }
         }
 

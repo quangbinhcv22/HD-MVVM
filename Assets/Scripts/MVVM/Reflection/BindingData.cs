@@ -43,7 +43,7 @@ namespace MVVM
 
         private void OnEnable()
         {
-            // if (mode.HaveSyncFromSource()) _propertySync.SyncFromSource();
+            if (mode.HaveSyncFromSource()) _syncEndpoints.SyncFormSource();
             _eventWatchers.ForEach(watcher => watcher.Watch());
         }
 

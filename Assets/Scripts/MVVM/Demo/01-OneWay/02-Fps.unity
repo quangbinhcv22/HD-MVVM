@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 1030710021}
   - component: {fileID: 1030710023}
   - component: {fileID: 1030710022}
+  - component: {fileID: 1030710024}
   m_Layer: 5
   m_Name: FpsText
   m_TagString: Untagged
@@ -562,6 +563,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030710020}
   m_CullTransparentMesh: 1
+--- !u!114 &1030710024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030710020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a472a95b74b4116a7a6bc6c3d1b8579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  sourceProperty:
+    viewModel: MVVM.Demo.FpsViewModel
+    memberName: Fps
+    dataAdapter: {fileID: 0}
+    isShowAdapter: 0
+  viewEndpoint:
+    component: {fileID: 1030710022}
+    memberName: text
+    dataAdapter: {fileID: 0}
+    isShowAdapter: 1
+  destEvent:
+    component: {fileID: 0}
+    eventName: 
+  keepConnectOnDisable: 0
 --- !u!1 &1261901328
 GameObject:
   m_ObjectHideFlags: 0

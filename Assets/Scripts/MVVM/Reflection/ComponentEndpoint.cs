@@ -19,6 +19,7 @@ namespace MVVM.Reflection
         [InfoBox("@MemberNotValidLog", VisibleIf = nameof(IsMemberNotValid), InfoMessageType = InfoMessageType.Error)]
         private string memberName;
 
+
         [SerializeField] [ShowIf(nameof(isShowAdapter))] [BoxGroup]
         private DataAdapter.DataAdapter dataAdapter;
 
@@ -36,7 +37,7 @@ namespace MVVM.Reflection
 
         private List<string> GetAllMembers()
         {
-            var allowTypes = MemberTypes.Field | MemberTypes.Property | MemberTypes.Method;
+            const MemberTypes allowTypes = MemberTypes.Field | MemberTypes.Property | MemberTypes.Method;
 
             return component is null
                 ? new List<string>()

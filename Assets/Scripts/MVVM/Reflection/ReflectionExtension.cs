@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace MVVM.Reflection
@@ -18,19 +19,65 @@ namespace MVVM.Reflection
 
         public static void SetValue(this MemberInfo member, object obj, object value)
         {
-            switch (member.MemberType)
+            switch (member)
             {
-                case MemberTypes.Field:
-                    (member as FieldInfo)?.SetValue(obj, value);
+                case FieldInfo field:
+                {
+                    if (field.FieldType != value.GetType())
+                    {
+                        var castedValue = Convert.ChangeType(value, field.FieldType);
+                        field.SetValue(obj, castedValue);
+                    }
+                    else
+                    {
+                        field.SetValue(obj, value);
+                    }
+
                     break;
-                case MemberTypes.Property:
-                    MethodInfo setMethod = (member as PropertyInfo)?.GetSetMethod(true);
+                }
+                case PropertyInfo property:
+                {
+                    var setMethod = property?.GetSetMethod(true);
                     if (setMethod == null) throw new ArgumentException("Property " + member.Name + " has no setter");
-                    setMethod.SetValue(obj, value);
+
+                    if (property.PropertyType != value.GetType())
+                    {
+                        var castedValue = Convert.ChangeType(value, property.PropertyType);
+                        setMethod.SetValue(obj, castedValue);
+                    }
+                    else
+                    {
+                        setMethod.SetValue(obj, value);
+                    }
+
                     break;
-                case MemberTypes.Method:
-                    (member as MethodInfo)?.Invoke(obj, new[] {value});
+                }
+
+                case MethodInfo method:
+                {
+                    var parameters = method.GetParameters();
+
+                    if (parameters.Any())
+                    {
+                        var firstParameter = parameters.First();
+
+                        if (firstParameter.ParameterType != value.GetType())
+                        {
+                            var castedValue = Convert.ChangeType(value, firstParameter.ParameterType);
+                            method.Invoke(obj, new[] {castedValue});
+                        }
+                        else
+                        {
+                            method.Invoke(obj, new[] {value});
+                        }
+                    }
+                    else
+                    {
+                        method.Invoke(obj, null);
+                    }
+
                     break;
+                }
                 default:
                     throw new ArgumentException("Can't set the value of a " + member.GetType().Name);
             }
