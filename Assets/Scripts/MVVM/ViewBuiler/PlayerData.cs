@@ -5,37 +5,33 @@ using Sirenix.OdinInspector;
 namespace MVVM
 {
     [Serializable]
-    public class MasterPlayerData : INotifyPropertyChanged
+    public class Alpha
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private readonly PropertySetter _propertySetter;
+        public Beta beta;
 
-        public MasterPlayerData()
-        {
-            _propertySetter = new PropertySetter(this);
-        }
+    }
+    
+    [Serializable]
+    public class Beta
+    {
+        public Omega omega;
+        public int b2;
+    }
+    
+    [Serializable]
+    public class Omega
+    {
+        public string o1;
+        public int o2;
+        public Zora zora;
+    }
 
-        private string _name;
-        private string _password;
-        private int _id;
-
-        public string Name
-        {
-            get => _name;
-            set => _propertySetter.SetProperty(ref _name, value, nameof(Name));
-        }
-
-        public string Password
-        {
-            get => _password;
-            set => _propertySetter.SetProperty(ref _password, value, nameof(Password));
-        }
-
-        public int Id
-        {
-            get => _id;
-            set => _propertySetter.SetProperty(ref _id, value, nameof(Id));
-        }
+    [Serializable]
+    public class Zora
+    {
+        public float z1;
+        public int z2;
+        public Omega z3;
     }
 
 

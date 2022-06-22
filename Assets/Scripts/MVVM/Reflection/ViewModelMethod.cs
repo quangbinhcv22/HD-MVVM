@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using MVVM.ModelView;
 using Sirenix.OdinInspector;
@@ -25,7 +26,7 @@ namespace MVVM.Reflection
         }
 
         
-        public List<string> GetAllModelViews() => MvvmUtility.GetAllModelViewsName();
+        public IEnumerable GetAllModelViews() => MvvmUtility.GetAllModelViewsName();
         public List<string> GetMethods() => MvvmUtility.GetAllModelViewMethods(viewModel);
         public void OpenAsset() => MvvmUtility.OpenViewModelAsset(viewModel);
     }

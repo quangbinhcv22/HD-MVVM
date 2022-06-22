@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using MVVM.ModelView;
+using Sirenix.OdinInspector;
 using UnityEditor;
 
 namespace MVVM.Reflection
 {
     public static class MvvmUtility
     {
-        public static List<string> GetAllModelViewsName()
+        public static IEnumerable GetAllModelViewsName()
         {
-            return GetAllModelViews().Select(member => member.FullName).OrderBy(name => name).ToList();
+            return GetAllModelViews().OrderBy(member => member.FullName).Select(member => new ValueDropdownItem<string>(member.FullName.Replace('.', '/'), member.FullName)).ToList();
         }
 
         private static IEnumerable<Type> GetAllModelViews()

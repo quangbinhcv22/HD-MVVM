@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using MVVM.Demo;
 using Sirenix.OdinInspector;
@@ -43,7 +44,7 @@ namespace MVVM.Reflection
         [HideInInspector] public bool isShowAdapter = true;
 #endif
 
-        public List<string> GetAllModelViews() => MvvmUtility.GetAllModelViewsName();
+        public IEnumerable GetAllModelViews() => MvvmUtility.GetAllModelViewsName();
         public List<string> GetAllProperties() => MvvmUtility.GetAllModelViewProperties(viewModel);
         public void OpenAsset() => MvvmUtility.OpenViewModelAsset(viewModel);
     }

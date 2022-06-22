@@ -177,7 +177,7 @@ MonoBehaviour:
   mode: 0
   source:
     coreView: {fileID: 303987717}
-    memberName: Number
+    memberName: normalized
     dataAdapter: {fileID: 0}
     isShowAdapter: 0
   dest:
@@ -337,7 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2332b1d9735b447a3f77074db90447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeDefine: {fileID: 11400000, guid: 45d70cabc394aef488e5013343d9fdbb, type: 2}
+  typeDefine:
+    assemblyName: Assembly-CSharp
+    typeName: MVVM.A
 --- !u!1 &871107407
 GameObject:
   m_ObjectHideFlags: 0

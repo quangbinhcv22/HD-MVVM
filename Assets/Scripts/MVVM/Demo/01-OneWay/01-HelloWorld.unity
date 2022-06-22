@@ -441,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.HelloWorldViewModel
+    viewModel: MVVM.Demo.PushSphereViewModel
     memberName: HelloText
     dataAdapter: {fileID: 0}
     isShowAdapter: 0
