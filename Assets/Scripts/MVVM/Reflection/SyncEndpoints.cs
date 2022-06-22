@@ -2,10 +2,10 @@
 {
     public class SyncEndpoints
     {
-        private readonly MemberEndpoint _sourceEndpoint;
-        private readonly MemberEndpoint _destEndpoint;
+        private readonly PropertyEndpoint _sourceEndpoint;
+        private readonly PropertyEndpoint _destEndpoint;
 
-        public SyncEndpoints(MemberEndpoint sourceEndpoint, MemberEndpoint destEndpoint)
+        public SyncEndpoints(PropertyEndpoint sourceEndpoint, PropertyEndpoint destEndpoint)
         {
             _sourceEndpoint = sourceEndpoint;
             _destEndpoint = destEndpoint;

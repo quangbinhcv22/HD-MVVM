@@ -21,9 +21,9 @@ namespace MVVM.Reflection
         public object ViewModel => ViewModelProvider.Instance.GetViewModel(viewModel);
 
 
-        public MemberEndpoint ToEndpoint()
+        public PropertyEndpoint ToEndpoint()
         {
-            return new MemberEndpoint(ViewModel, memberName, dataAdapter);
+            return new PropertyEndpoint(ViewModel, memberName, dataAdapter);
         }
 
         public bool HaveNotifyPropertyChange() => ViewModel is INotifyPropertyChanged;

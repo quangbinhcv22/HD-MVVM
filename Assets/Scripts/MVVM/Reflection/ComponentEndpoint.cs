@@ -23,9 +23,9 @@ namespace MVVM.Reflection
         [SerializeField] [ShowIf(nameof(isShowAdapter))] [BoxGroup]
         private DataAdapter.DataAdapter dataAdapter;
 
-        public MemberEndpoint ToEndpoint()
+        public PropertyEndpoint ToEndpoint()
         {
-            return new MemberEndpoint(component, memberName, dataAdapter);
+            return new PropertyEndpoint(component, memberName, dataAdapter);
         }
 
 

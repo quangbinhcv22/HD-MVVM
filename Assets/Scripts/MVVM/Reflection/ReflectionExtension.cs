@@ -17,7 +17,7 @@ namespace MVVM.Reflection
             };
         }
 
-        public static void SetValue(this MemberInfo member, object obj, object value)
+        public static void SetMemberValue(this MemberInfo member, object obj, object value)
         {
             switch (member)
             {
@@ -40,14 +40,14 @@ namespace MVVM.Reflection
                     var setMethod = property?.GetSetMethod(true);
                     if (setMethod == null) throw new ArgumentException("Property " + member.Name + " has no setter");
 
-                    if (property.PropertyType != value.GetType())
+                    if (value != null && property.PropertyType != value.GetType() && value is IConvertible)
                     {
                         var castedValue = Convert.ChangeType(value, property.PropertyType);
-                        setMethod.SetValue(obj, castedValue);
+                        property.SetValue(obj, castedValue);
                     }
                     else
                     {
-                        setMethod.SetValue(obj, value);
+                        property.SetValue(obj, value);
                     }
 
                     break;
@@ -57,7 +57,7 @@ namespace MVVM.Reflection
                 {
                     var parameters = method.GetParameters();
 
-                    if (parameters.Any())
+                    if (value != null && parameters.Any())
                     {
                         var firstParameter = parameters.First();
 
@@ -83,7 +83,7 @@ namespace MVVM.Reflection
             }
         }
 
-        public static object GetValue(this MemberInfo member, object obj)
+        public static object GetMemberValue(this MemberInfo member, object obj)
         {
             return member switch
             {

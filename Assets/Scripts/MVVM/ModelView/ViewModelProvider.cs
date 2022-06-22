@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class ViewModelProvider : MonoBehaviour
                 _instance = new GameObject(nameof(ViewModelProvider)).AddComponent<ViewModelProvider>();
                 DontDestroyOnLoad(_instance);
             }
-            
+
             return _instance;
         }
     }
@@ -30,6 +31,14 @@ public class ViewModelProvider : MonoBehaviour
         var isComponent = viewModelType.IsSubclassOf(typeof(Component));
 
         return isComponent ? GetViewModelInstance(viewModelType) : GetPureViewModel(viewModelType);
+    }
+
+    public T GetViewModel<T>()
+    {
+        var viewModelType = typeof(T);
+        var isComponent = viewModelType.IsSubclassOf(typeof(Component));
+
+        return (T) (isComponent ? GetViewModelInstance(viewModelType) : GetPureViewModel(viewModelType));
     }
 
     private static Type GetViewModelType(string viewModelName)

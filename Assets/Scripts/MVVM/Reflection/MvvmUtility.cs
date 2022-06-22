@@ -40,7 +40,7 @@ namespace MVVM.Reflection
             if (modelViewType is null) return new List<string>();
 
             var bindingProperty = modelViewType.GetMembers().Where(member =>
-                member.MemberType is MemberTypes.Method && member.IsDefined(typeof(BindingAttribute)));
+                member.MemberType is MemberTypes.Method);
 
             return bindingProperty.Select(member => member.Name).ToList();
         }

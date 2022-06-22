@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace MVVM.Reflection
 {
-    public class MemberEndpoint
+    public class PropertyEndpoint
     {
         private object _owner;
         private string _memberName;
@@ -12,7 +12,7 @@ namespace MVVM.Reflection
         private MemberInfo _memberInfo;
 
 
-        public MemberEndpoint(object owner, string memberName, DataAdapter.DataAdapter dataAdapter)
+        public PropertyEndpoint(object owner, string memberName, DataAdapter.DataAdapter dataAdapter = null)
         {
             SetOwner(owner);
             SetMember(memberName);
@@ -38,7 +38,7 @@ namespace MVVM.Reflection
 
         public object GetValue()
         {
-            return _memberInfo.GetValue(_owner);
+            return _memberInfo.GetMemberValue(_owner);
         }
 
         public void SetValue(object value)
@@ -46,11 +46,11 @@ namespace MVVM.Reflection
             if (_dataAdapter)
             {
                 var adaptedValue = _dataAdapter.Adapting(value);
-                _memberInfo.SetValue(_owner, adaptedValue);
+                _memberInfo.SetMemberValue(_owner, adaptedValue);
             }
             else
             {
-                _memberInfo.SetValue(_owner, value);
+                _memberInfo.SetMemberValue(_owner, value);
             }
         }
 

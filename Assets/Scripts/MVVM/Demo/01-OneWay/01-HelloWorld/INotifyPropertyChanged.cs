@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 
-namespace MVVM.Demo
+namespace MVVM
 {
     public interface INotifyPropertyChanged
     {
         event PropertyChangedEventHandler PropertyChanged;
-        void NotifyPropertyChanged(string propertyName);
     }
 }

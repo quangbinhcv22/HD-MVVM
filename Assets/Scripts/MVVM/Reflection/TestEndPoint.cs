@@ -8,8 +8,8 @@ public class TestEndPoint : MonoBehaviour
     public float sourceNumber;
     public ClassA destNumber;
 
-    private MemberEndpoint _sourceEndpoint;
-    private MemberEndpoint _destEndpoint;
+    private PropertyEndpoint _sourceEndpoint;
+    private PropertyEndpoint _destEndpoint;
 
     private SyncEndpoints _syncEndpoints;
 

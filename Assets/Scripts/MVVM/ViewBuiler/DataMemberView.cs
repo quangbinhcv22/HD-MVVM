@@ -75,10 +75,10 @@ namespace MVVM.ViewBuilder
         private DataAdapter.DataAdapter dataAdapter;
 
 
-        public MemberEndpoint ToEndpoint()
+        public PropertyEndpoint ToEndpoint()
         {
             // return new MemberEndpoint(coreView.Data, memberName, dataAdapter);
-            return new MemberEndpoint(coreView, "Data", dataAdapter);
+            return new PropertyEndpoint(coreView, "Data", dataAdapter);
         }
 
         public EventWatcher ToWatcher(Action callback)

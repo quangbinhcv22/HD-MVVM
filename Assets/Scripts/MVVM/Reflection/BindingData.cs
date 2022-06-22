@@ -24,7 +24,8 @@ namespace MVVM
         private ComponentEvent destEvent;
 
 
-        [SerializeField, Space] private bool keepBindingOnDisable;
+        [SerializeField, Space] private bool autoBindingOnEnable = true;
+        [SerializeField] private bool keepBindingOnDisable;
 
 
         private SyncEndpoints _syncEndpoints;
@@ -41,7 +42,7 @@ namespace MVVM
 
         private void OnEnable()
         {
-            if (mode.HaveSyncFromSource()) _syncEndpoints.SyncFormSource();
+            if (autoBindingOnEnable && mode.HaveSyncFromSource()) _syncEndpoints.SyncFormSource();
             _eventWatchers.ForEach(watcher => watcher.Watch());
         }
 

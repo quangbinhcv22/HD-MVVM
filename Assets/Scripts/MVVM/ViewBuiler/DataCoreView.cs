@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using INotifyPropertyChanged = MVVM.Demo.INotifyPropertyChanged;
 
 namespace MVVM.ViewBuilder
 {
@@ -44,7 +43,7 @@ namespace MVVM.ViewBuilder
         public void NotifyPropertyChanged(string propertyName)
         {
             Debug.Log(nameof(NotifyPropertyChanged));
-            
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
