@@ -31,7 +31,6 @@ namespace MVVM
     {
         public float z1;
         public int z2;
-        public Omega z3;
     }
 
 

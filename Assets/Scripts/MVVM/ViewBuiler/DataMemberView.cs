@@ -5,21 +5,23 @@ using System.Linq;
 using System.Reflection;
 using MVVM.Demo;
 using MVVM.Reflection;
+using MVVM.ViewBuiler;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 namespace MVVM.ViewBuilder
 {
     public class DataMemberView : MonoBehaviour
     {
-        [SerializeField] private BindingMode mode;
+        [SerializeField] [DisableInPlayMode] private BindingMode mode;
 
-        [SerializeField] private DataCoreProperty source;
-        [SerializeField] private ComponentEndpoint dest;
+        [Header("Source")] [HideLabel] [SerializeField]
+        private DataCoreProperty source;
 
-        [SerializeField] [ShowIf(nameof(HaveSyncFromDest))]
+        [Header("Dest")] [HideLabel] [SerializeField]
+        private ComponentEndpoint dest;
+
+        [Header("Dest Event")] [HideLabel] [SerializeField] [ShowIf(nameof(HaveSyncFromDest))]
         private ComponentEvent destEvent;
 
         [SerializeField] [Space] private bool bindingOnEnable = true;
@@ -69,18 +71,20 @@ namespace MVVM.ViewBuilder
     [Serializable]
     public class DataCoreProperty
     {
-        [SerializeField] [BoxGroup] private DataCoreView coreView;
+        [SerializeField] [BoxGroup] [DisableInPlayMode]
+        private DataCoreView coreView;
 
-        [SerializeField] [BoxGroup] private string memberName;
+        [SerializeField] [BoxGroup] [DisableInPlayMode]
+        private string memberName;
 
-        [SerializeField] [BoxGroup] [ShowIf(nameof(isShowAdapter))]
+        [SerializeField] [BoxGroup] [ShowIf(nameof(isShowAdapter))] [DisableInPlayMode]
         private DataAdapter.DataAdapter dataAdapter;
 
 
-        public PropertyEndpoint ToEndpoint()
+        public IPropertyEndpoint ToEndpoint()
         {
-            // return new MemberEndpoint(coreView.Data, memberName, dataAdapter);
-            return new PropertyEndpoint(coreView, "Data", dataAdapter);
+            // return new PropertyEndpoint(coreView, "Data", dataAdapter);
+            return new MemberPathEndpoint(coreView, "Data." + memberName);
         }
 
         public EventWatcher ToWatcher(Action callback)

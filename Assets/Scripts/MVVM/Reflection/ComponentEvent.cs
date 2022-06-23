@@ -11,9 +11,10 @@ namespace MVVM.Reflection
     [Serializable]
     public class ComponentEvent
     {
-        [SerializeField] [BoxGroup] private Component component;
+        [SerializeField] [BoxGroup] [DisableInPlayMode]
+        private Component component;
 
-        [SerializeField] [ValueDropdown(nameof(GetEvents))] [BoxGroup]
+        [SerializeField] [ValueDropdown(nameof(GetEvents))] [BoxGroup] [DisableInPlayMode]
         private string eventName;
 
 

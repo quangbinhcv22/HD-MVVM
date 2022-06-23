@@ -1,11 +1,13 @@
-﻿namespace MVVM.Reflection
+﻿using MVVM.ViewBuiler;
+
+namespace MVVM.Reflection
 {
     public class SyncEndpoints
     {
-        private readonly PropertyEndpoint _sourceEndpoint;
-        private readonly PropertyEndpoint _destEndpoint;
+        private readonly IPropertyEndpoint _sourceEndpoint;
+        private readonly IPropertyEndpoint _destEndpoint;
 
-        public SyncEndpoints(PropertyEndpoint sourceEndpoint, PropertyEndpoint destEndpoint)
+        public SyncEndpoints(IPropertyEndpoint sourceEndpoint, IPropertyEndpoint destEndpoint)
         {
             _sourceEndpoint = sourceEndpoint;
             _destEndpoint = destEndpoint;

@@ -1,10 +1,11 @@
+using MVVM;
 using MVVM.ViewBuilder;
 using UnityEngine;
 
 public class TestTD : MonoBehaviour
 {
     [SerializeField] DataCoreView coreView;
-    [SerializeField] ClassA a;
+    [SerializeField] Alpha a;
     
     void Update()
     {

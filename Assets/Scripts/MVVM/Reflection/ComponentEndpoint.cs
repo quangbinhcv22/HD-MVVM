@@ -10,17 +10,19 @@ namespace MVVM.Reflection
     [Serializable]
     public class ComponentEndpoint
     {
-        [SerializeField] [BoxGroup] private Component component;
+        [SerializeField] [BoxGroup] [DisableInPlayMode]
+        private Component component;
 
         [SerializeField]
         [BoxGroup]
         [ValueDropdown(nameof(GetAllMembers))]
         [EnableIf(nameof(HaveComponent))]
         [InfoBox("@MemberNotValidLog", VisibleIf = nameof(IsMemberNotValid), InfoMessageType = InfoMessageType.Error)]
+        [DisableInPlayMode]
         private string memberName;
 
 
-        [SerializeField] [ShowIf(nameof(isShowAdapter))] [BoxGroup]
+        [SerializeField] [ShowIf(nameof(isShowAdapter))] [BoxGroup] [DisableInPlayMode]
         private DataAdapter.DataAdapter dataAdapter;
 
         public PropertyEndpoint ToEndpoint()

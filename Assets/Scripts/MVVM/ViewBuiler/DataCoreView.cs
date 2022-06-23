@@ -7,7 +7,7 @@ namespace MVVM.ViewBuilder
 {
     public class DataCoreView : MonoBehaviour, INotifyPropertyChanged
     {
-        [Header("DataType")] [HideLabel] [SerializeField]
+        [Header("DataType")] [HideLabel] [SerializeField] [DisableInPlayMode]
         private TypeDefine typeDefine;
 
         public Type DataType

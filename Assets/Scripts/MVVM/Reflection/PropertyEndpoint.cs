@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using System.Reflection;
+using MVVM.ViewBuiler;
 
 namespace MVVM.Reflection
 {
-    public class PropertyEndpoint
+    public class PropertyEndpoint : IPropertyEndpoint
     {
         private object _owner;
         private string _memberName;

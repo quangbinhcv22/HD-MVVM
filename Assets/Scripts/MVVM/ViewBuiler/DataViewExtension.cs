@@ -8,6 +8,9 @@ namespace MVVM.ViewBuilder
     {
         public static object Get(this object obj, string memberPath)
         {
+            var a = obj is null;
+            
+            if (obj is null) return null;
             return memberPath.Split('.').Aggregate(obj, (current, member) => GetNextMember(current, member));
         }
 
