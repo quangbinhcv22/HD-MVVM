@@ -1,7 +1,7 @@
 namespace Game.Runtime
 {
-    public sealed class MouseDownHandler : ComponentEventHandler
+    public sealed class ThreadMouseDown : ThreadBehavior
     {
-        private void OnMouseDown() => InvokeEvent();
+        private void OnMouseDown() => Run();
     }
 }
