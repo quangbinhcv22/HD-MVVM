@@ -1,4 +1,4 @@
-using Game.Runtime;
+using NCB.Behavior;
 using UnityEngine;
 
 public class TestBehavior : MonoBehaviour

@@ -1,4 +1,4 @@
-using MVVM.ModelView;
+using NCB.MVVM;
 
 namespace SandBox
 {
