@@ -1,8 +1,6 @@
-using NCB.MVVM;
-
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/SimpleText")]
     public class SimpleTextViewModel : ViewModelBase
     {
         private string _content;

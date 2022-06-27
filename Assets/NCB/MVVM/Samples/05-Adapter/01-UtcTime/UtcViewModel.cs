@@ -1,11 +1,10 @@
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using NCB.MVVM;
 
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/Utc")]
     public class UtcViewModel : INotifyPropertyChanged
     {
         public DateTime UtcTime => DateTime.UtcNow;
@@ -33,14 +32,5 @@ namespace NCB.MVVM.Demo
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
-
-    
-    [Flags]
-    public enum MemberAccess
-    {
-        Get = 1 << 0,
-        Set = 2 << 0,
-        All = Get | Set,
     }
 }

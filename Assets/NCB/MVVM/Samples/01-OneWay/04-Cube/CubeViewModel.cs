@@ -1,18 +1,17 @@
 using System.ComponentModel;
-using NCB.MVVM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/Cube")]
     public class CubeViewModel : MonoBehaviour, INotifyPropertyChanged
     {
         private Vector3 _scale;
         private Quaternion _rotation;
         private Color _color;
 
-        
+
         [ShowInInspector]
         public Vector3 Scale
         {
@@ -34,7 +33,7 @@ namespace NCB.MVVM.Demo
                 NotifyPropertyChanged(nameof(Rotation));
             }
         }
-        
+
         [ShowInInspector]
         public Color Color
         {
@@ -47,6 +46,14 @@ namespace NCB.MVVM.Demo
         }
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        
         private void Update()
         {
             Scale = GetScaleAtTime(Time.time);
@@ -68,14 +75,6 @@ namespace NCB.MVVM.Demo
         private Quaternion GetRotationAtTime(float time)
         {
             return Quaternion.Euler(Vector3.Lerp(Vector3.zero, Vector3.one * 360, Mathf.PingPong(time, 1)));
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -4,12 +4,11 @@ using UnityEngine;
 
 namespace NCB.MVVM
 {
+    [HideMonoScript]
     public class BindingData : MonoBehaviour
     {
-        [SerializeField] private BindingMode mode;
+        [SerializeField] [Space] private BindingMode mode;
 
-        // [InfoBox("Source and Dest properties not match type", InfoMessageType.Error)]
-        // [InfoBox("Source required property has set access, but it not", InfoMessageType.Error)]
         [Header("Source")] [HideLabel] [SerializeField]
         private ViewModelProperty source;
 

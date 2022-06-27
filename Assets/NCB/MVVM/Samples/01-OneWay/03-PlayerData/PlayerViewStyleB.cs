@@ -9,7 +9,12 @@ namespace NCB.MVVM.Demo
         [SerializeField] private TMP_Text ageText;
         [SerializeField] private TMP_Text guidText;
 
-        public void UpdateView(PlayerData data)
+        public PlayerData Data
+        {
+            set => UpdateView(value);
+        }
+        
+        private void UpdateView(PlayerData data)
         {
             nameText.SetText(data.name);
             ageText.SetText(data.age.ToString());

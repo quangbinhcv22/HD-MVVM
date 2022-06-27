@@ -24,7 +24,7 @@ namespace NCB.Behavior
 
         public void Invoke()
         {
-            _methodInfo ??= target.GetType().GetMethod(methodName);
+            _methodInfo ??= target.GetType().GetMethod(methodName, Array.Empty<Type>());
             _methodInfo?.Invoke(target, null);
         }
 
@@ -39,6 +39,7 @@ namespace NCB.Behavior
                 
                 return target.GetType().GetMethods().Where(m => m.ReturnType == typeof(void))
                 .Where(m => m.GetParameters().Length == 0)
+                .Where(member => member.GetCustomAttribute<ObsoleteAttribute>() is null)
                 .Select(method => method.Name).Where(n => !(n.Contains("get_") || n.Contains("set_")));
             }
         }

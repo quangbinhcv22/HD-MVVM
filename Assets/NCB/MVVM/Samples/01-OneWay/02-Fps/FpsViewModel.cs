@@ -1,25 +1,25 @@
 using System.ComponentModel;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/Fps")]
     public class FpsViewModel : MonoBehaviour, INotifyPropertyChanged
     {
-        [ShowInInspector] public int Fps { get; set; }
+        public int Fps => (int) (1 / Time.deltaTime);
+
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         private void Update()
         {
-            Fps = (int) (1 / Time.deltaTime);
             NotifyPropertyChanged(nameof(Fps));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

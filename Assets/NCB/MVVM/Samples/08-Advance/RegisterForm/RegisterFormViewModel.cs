@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using NCB.MVVM;
 
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/RegisterForm")]
     public class RegisterFormViewModel : ViewModelBase
     {
         private string _username;

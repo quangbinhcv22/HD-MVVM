@@ -93,5 +93,79 @@ namespace NCB.MVVM
                 _ => throw new ArgumentException("Can't get the value of a " + member.GetType().Name)
             };
         }
+
+
+        public static bool IsPropertyOrField(this MemberInfo memberInfo)
+        {
+            return (MemberTypes.Property | MemberTypes.Field).HasFlag(memberInfo.MemberType);
+        }
+
+
+        public static bool IsObsolete(object owner, string memberName)
+        {
+            return owner.GetType().GetMember(memberName).First().IsObsolete();
+        }
+
+        public static bool NotObsolete(object owner, string memberName)
+        {
+            return !IsObsolete(owner, memberName);
+        }
+
+        public static bool IsObsolete(this MemberInfo memberInfo)
+        {
+            return memberInfo.GetCustomAttribute<ObsoleteAttribute>() != null;
+        }
+
+        public static bool NotObsolete(this MemberInfo memberInfo)
+        {
+            return !memberInfo.IsObsolete();
+        }
+
+        public static bool IsObsolete(this Type type)
+        {
+            if (type is null) return false;
+            return type.GetCustomAttribute<ObsoleteAttribute>() != null;
+        }
+
+        public static bool NotObsolete(this Type type)
+        {
+            return !type.IsObsolete();
+        }
+
+
+        public static bool MatchRequire(this MemberInfo memberInfo, PropertyAccess access)
+        {
+            if (memberInfo is FieldInfo) return true;
+            if (memberInfo is PropertyInfo property)
+            {
+                var requireGet = access.HasFlag(PropertyAccess.Get);
+                var requireSet = access.HasFlag(PropertyAccess.Set);
+
+                var canGet = property.GetGetMethod() != null;
+                var canSet = property.GetSetMethod() != null;
+
+                var passGet = !requireGet || canGet;
+                var passSet = !requireSet || canSet;
+
+                return passGet && passSet;
+            }
+
+
+            return false;
+        }
+
+        public static bool CanGet(this MemberInfo memberInfo)
+        {
+            if (memberInfo is FieldInfo) return true;
+            if (memberInfo is PropertyInfo property) return property.GetGetMethod() != null;
+            return false;
+        }
+
+        public static bool CanSet(this MemberInfo memberInfo)
+        {
+            if (memberInfo is FieldInfo) return true;
+            if (memberInfo is PropertyInfo property) return property.GetSetMethod() != null;
+            return false;
+        }
     }
 }

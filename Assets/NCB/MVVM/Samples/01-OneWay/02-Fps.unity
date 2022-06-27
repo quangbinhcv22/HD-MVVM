@@ -577,18 +577,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.FpsViewModel
+    viewModel: Demo/Fps
     memberName: Fps
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   dest:
     component: {fileID: 1030710022}
     memberName: text
     dataAdapter: {fileID: 0}
+    requireAccess: 2
     isShowAdapter: 1
   destEvent:
     component: {fileID: 0}
     eventName: 
+  autoBindingOnEnable: 1
   keepBindingOnDisable: 0
 --- !u!1 &1261901328
 GameObject:

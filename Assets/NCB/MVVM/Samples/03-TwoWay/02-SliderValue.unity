@@ -424,18 +424,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.SliderViewModel
+    viewModel: Demo/Slider
     memberName: SliderValue
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   dest:
     component: {fileID: 311738484}
     memberName: text
     dataAdapter: {fileID: 0}
+    requireAccess: 2
     isShowAdapter: 1
   destEvent:
     component: {fileID: 0}
     eventName: 
+  autoBindingOnEnable: 1
   keepBindingOnDisable: 0
 --- !u!114 &311738484
 MonoBehaviour:
@@ -1124,18 +1127,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   source:
-    viewModel: MVVM.Demo.SliderViewModel
+    viewModel: Demo/Slider
     memberName: SliderValue
     dataAdapter: {fileID: 0}
+    requireAccess: 3
     isShowAdapter: 1
   dest:
     component: {fileID: 775793193}
     memberName: value
     dataAdapter: {fileID: 0}
+    requireAccess: 3
     isShowAdapter: 1
   destEvent:
     component: {fileID: 775793193}
     eventName: onValueChanged
+  autoBindingOnEnable: 1
   keepBindingOnDisable: 0
 --- !u!114 &775793193
 MonoBehaviour:
@@ -1282,18 +1288,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.SliderViewModel
+    viewModel: Demo/Slider
     memberName: SliderValue
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   dest:
     component: {fileID: 1138286701}
     memberName: value
     dataAdapter: {fileID: 0}
+    requireAccess: 2
     isShowAdapter: 1
   destEvent:
     component: {fileID: 1138286701}
     eventName: onValueChanged
+  autoBindingOnEnable: 1
   keepBindingOnDisable: 0
 --- !u!114 &1138286701
 MonoBehaviour:
@@ -2692,18 +2701,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 2
   source:
-    viewModel: MVVM.Demo.SliderViewModel
+    viewModel: Demo/Slider
     memberName: SliderValue
     dataAdapter: {fileID: 0}
+    requireAccess: 2
     isShowAdapter: 1
   dest:
     component: {fileID: 1940910428}
     memberName: value
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   destEvent:
     component: {fileID: 1940910428}
     eventName: onValueChanged
+  autoBindingOnEnable: 1
   keepBindingOnDisable: 0
 --- !u!114 &1940910428
 MonoBehaviour:

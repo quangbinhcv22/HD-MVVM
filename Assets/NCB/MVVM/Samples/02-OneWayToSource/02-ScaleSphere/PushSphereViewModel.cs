@@ -1,9 +1,8 @@
-using NCB.MVVM;
 using UnityEngine;
 
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/PushSphere")]
     public class PushSphereViewModel : ViewModelBase
     {
         private readonly float _baseUnit;

@@ -1,11 +1,9 @@
-using NCB.MVVM;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/PlayerData")]
     public class PlayerDataViewModel : MonoBehaviour
     {
         [ShowInInspector] public PlayerData PlayerData => FakeDatabase.PlayerData;

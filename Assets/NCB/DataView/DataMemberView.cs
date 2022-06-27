@@ -70,14 +70,12 @@ namespace NCB.DataView
     [Serializable]
     public class DataCoreProperty
     {
-        [SerializeField] [BoxGroup]
-        private DataCoreView coreView;
+        [SerializeField] [BoxGroup] private DataCoreView coreView;
 
-        [SerializeField] [BoxGroup]
-        private string memberName;
+        [SerializeField] [BoxGroup] private string memberName;
 
         [SerializeField] [BoxGroup] [ShowIf(nameof(isShowAdapter))]
-        private NCB.MVVM.DataAdapter dataAdapter;
+        private DataAdapter dataAdapter;
 
 
         public IPropertyEndpoint ToEndpoint()
@@ -91,9 +89,7 @@ namespace NCB.DataView
         }
 
 
-#if UNITY_EDITOR
         [HideInInspector] public bool isShowAdapter = true;
-#endif
 
         private IEnumerable GetMembers()
         {

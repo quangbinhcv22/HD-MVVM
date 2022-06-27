@@ -72,6 +72,17 @@ namespace NCB.MVVM
         [SerializeField] private string _password;
         [SerializeField] private int _id;
 
+        public PlayerData()
+        {
+        }
+
+        public PlayerData(string name, string password, int id)
+        {
+            Name = name;
+            Password = password;
+            Id = id;
+        }
+
         public string Name
         {
             get => _name;

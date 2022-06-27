@@ -445,14 +445,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.Capcha.CaptchaViewModel
+    viewModel: NCB.MVVM.Demo.Capcha.CaptchaViewModel
     memberName: Captcha
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   dest:
     component: {fileID: 167171922}
     memberName: UpdateView
     dataAdapter: {fileID: 0}
+    requireAccess: 2
     isShowAdapter: 1
   destEvent:
     component: {fileID: 0}
@@ -745,14 +747,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.Capcha.CaptchaViewModel
+    viewModel: NCB.MVVM.Demo.Capcha.CaptchaViewModel
     memberName: Result
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   dest:
     component: {fileID: 495519140}
     memberName: text
     dataAdapter: {fileID: 11400000, guid: bf7fb4b6312909b48973c54dcf68af2f, type: 2}
+    requireAccess: 2
     isShowAdapter: 1
   destEvent:
     component: {fileID: 0}
@@ -773,14 +777,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   source:
-    viewModel: MVVM.Demo.Capcha.CaptchaViewModel
+    viewModel: NCB.MVVM.Demo.Capcha.CaptchaViewModel
     memberName: Result
     dataAdapter: {fileID: 0}
+    requireAccess: 1
     isShowAdapter: 0
   dest:
     component: {fileID: 495519140}
     memberName: color
     dataAdapter: {fileID: 11400000, guid: baf9c21335b716342919b615721765c8, type: 2}
+    requireAccess: 2
     isShowAdapter: 1
   destEvent:
     component: {fileID: 0}
@@ -1303,14 +1309,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   source:
-    viewModel: MVVM.Demo.Capcha.CaptchaViewModel
+    viewModel: NCB.MVVM.Demo.Capcha.CaptchaViewModel
     memberName: CaptchaInput
     dataAdapter: {fileID: 0}
+    requireAccess: 3
     isShowAdapter: 1
   dest:
     component: {fileID: 756336863}
     memberName: text
     dataAdapter: {fileID: 0}
+    requireAccess: 3
     isShowAdapter: 1
   destEvent:
     component: {fileID: 756336863}
@@ -1774,6 +1782,7 @@ GameObject:
   - component: {fileID: 1371446674}
   - component: {fileID: 1371446673}
   - component: {fileID: 1371446672}
+  - component: {fileID: 1371446676}
   - component: {fileID: 1371446675}
   m_Layer: 5
   m_Name: GenNewButton
@@ -1894,15 +1903,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1371446670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbe04658ff6646748836948d43236b25, type: 3}
+  m_Script: {fileID: 11500000, guid: 415ccd4a51d798a49ac21f9c47d08d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destEvent:
+  method:
+    viewModel: NCB.MVVM.Demo.Capcha.CaptchaViewModel
+    memberName: GenNewCaptcha
+--- !u!114 &1371446676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371446670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e5576c5daa09243a809d25bca8b4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorThread:
+    behaviors:
+    - target: {fileID: 1371446675}
+      methodName: Run
+  event:
     component: {fileID: 1371446672}
     eventName: onClick
-  sourceCallback:
-    viewModel: MVVM.Demo.Capcha.CaptchaViewModel
-    memberName: GenNewCaptcha
 --- !u!1 &1647459825
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using NCB.MVVM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -29,14 +28,5 @@ namespace NCB.MVVM
         public IEnumerable GetAllModelViews() => MvvmUtility.GetAllModelViewsName();
         public List<string> GetMethods() => MvvmUtility.GetAllModelViewMethods(viewModel);
         public void OpenAsset() => MvvmUtility.OpenViewModelAsset(viewModel);
-    }
-
-    [Binding]
-    public class SayHiViewModel
-    {
-        public void SayHi()
-        {
-            Debug.Log("Hello world!");
-        }
     }
 }

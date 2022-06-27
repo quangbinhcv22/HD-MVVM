@@ -1,14 +1,13 @@
 using System;
-using NCB.MVVM;
 
 namespace NCB.MVVM.Demo.Capcha
 {
-    [Binding]
+    [Binding("Demo/Captcha")]
     public class CaptchaViewModel : ViewModelBase
     {
         private string _captcha;
         private string _captchaInput;
-        
+
         public string Captcha
         {
             get => _captcha;

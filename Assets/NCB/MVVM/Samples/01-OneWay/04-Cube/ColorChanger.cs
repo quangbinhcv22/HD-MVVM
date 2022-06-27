@@ -6,7 +6,12 @@ namespace NCB.MVVM.Demo
     {
         [SerializeField] private new Renderer renderer;
 
-        public void SetColor(Color color)
+        public Color color
+        {
+            set => SetColor(value);
+        }
+
+        private void SetColor(Color color)
         {
             renderer.material.color = color;
         }

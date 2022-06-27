@@ -9,7 +9,12 @@ namespace NCB.MVVM.Demo
         [SerializeField] private TMP_Text nameText;
         [SerializeField] private Image avatar;
 
-        public void UpdateView(PlayerData data)
+        public PlayerData Data
+        {
+            set => UpdateView(value);
+        }
+
+        private void UpdateView(PlayerData data)
         {
             nameText.SetText(data.name);
             avatar.sprite = data.avatar;

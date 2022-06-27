@@ -5,25 +5,25 @@ namespace NCB.MVVM.Demo
 {
     public class PropertyChangedWatcher : IEventWatcher
     {
-        private readonly INotifyPropertyChanged _owner;
+        private readonly INotifyPropertyChanged _notifier;
         private readonly string _propertyName;
         private readonly Action _callback;
 
-        public PropertyChangedWatcher(INotifyPropertyChanged owner, string propertyName, Action callback)
+        public PropertyChangedWatcher(INotifyPropertyChanged notifier, string propertyName, Action callback)
         {
-            _owner = owner;
+            _notifier = notifier;
             _propertyName = propertyName;
             _callback = callback;
         }
 
         public void Watch()
         {
-            _owner.PropertyChanged += OnPropertyChanged;
+            _notifier.PropertyChanged += OnPropertyChanged;
         }
 
         public void Dispose()
         {
-            _owner.PropertyChanged -= OnPropertyChanged;
+            _notifier.PropertyChanged -= OnPropertyChanged;
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)

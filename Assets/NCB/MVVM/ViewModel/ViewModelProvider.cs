@@ -10,6 +10,7 @@ namespace NCB.MVVM
         [ShowInInspector] private List<object> _componentViewModels = new();
         [ShowInInspector] private List<object> _pureViewModels = new();
 
+
         private static ViewModelProvider _instance;
 
         public static ViewModelProvider Instance
@@ -28,7 +29,7 @@ namespace NCB.MVVM
 
         public object GetViewModel(string viewModelName)
         {
-            var viewModelType = GetViewModelType(viewModelName);
+            var viewModelType = MvvmUtility.GetViewModelType(viewModelName);
             var isComponent = viewModelType.IsSubclassOf(typeof(Component));
 
             return isComponent ? GetViewModelInstance(viewModelType) : GetPureViewModel(viewModelType);
@@ -41,11 +42,7 @@ namespace NCB.MVVM
 
             return (T) (isComponent ? GetViewModelInstance(viewModelType) : GetPureViewModel(viewModelType));
         }
-
-        private static Type GetViewModelType(string viewModelName)
-        {
-            return Type.GetType(viewModelName);
-        }
+        
 
         private object GetViewModelInstance(Type viewModelType)
         {

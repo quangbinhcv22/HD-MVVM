@@ -5,12 +5,13 @@ namespace NCB.MVVM.Demo
 {
     public class FormatText : MonoBehaviour
     {
-        [SerializeField] private TMP_Text text;
+        [SerializeField] private TMP_Text textMesh;
         [SerializeField] private string format = "{0}";
 
-        public void SetText(object source)
+        public object text
         {
-            text.SetText(string.Format(format, source));
+            get => textMesh.text;
+            set => textMesh.SetText(string.Format(format, value));
         }
     }
 }

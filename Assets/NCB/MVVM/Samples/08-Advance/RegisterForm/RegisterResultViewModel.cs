@@ -1,8 +1,6 @@
-using NCB.MVVM;
-
 namespace NCB.MVVM.Demo
 {
-    [Binding]
+    [Binding("Demo/RegisterResult")]
     public class RegisterResultViewModel : ViewModelBase
     {
         public object OnRegisterCallback { get; set; }
