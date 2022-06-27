@@ -3,7 +3,7 @@ using NCB.MVVM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public sealed class ThreadCustomEvent : ThreadBehavior
+public sealed class ThreadComponentEvent : ThreadBehavior
 {
     [Header("Event")] [HideLabel] [SerializeField]
     private ComponentEvent @event;
